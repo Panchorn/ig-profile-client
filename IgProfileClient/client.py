@@ -7,6 +7,8 @@ base_url = 'https://www.instagram.com/{}/?__a=1'
 class Client:
 
     def get_common_profile(self, username):
+        if not username or username.isspace():
+            raise Exception('username should not be none or empty')
         return self._get_profile(
             self._send_request(username)
         )
@@ -17,6 +19,8 @@ class Client:
 
     @staticmethod
     def _get_profile(response):
+        if response.status_code == 404:
+            raise Exception('profile not found')
         response.raise_for_status()
         profile_response = json.loads(response.content, encoding='utf-8')
         return Profile(
