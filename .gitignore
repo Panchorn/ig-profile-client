@@ -4,4 +4,6 @@ dist
 .cache
 build
 htmlcov
+
 *venv/
+run.py
