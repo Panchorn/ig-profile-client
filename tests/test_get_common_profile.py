@@ -41,6 +41,7 @@ class GetCommonProfile(unittest.TestCase):
 
     @requests_mock.Mocker()
     def test_get_common_profile_fail_profile_not_found(self, mock):
+        raised = False
         expected = "profile not found"
         mock.register_uri(
             'GET',
@@ -49,42 +50,50 @@ class GetCommonProfile(unittest.TestCase):
         )
         try:
             self.client.get_common_profile("not_found")
-            self.assertTrue(False)
         except Exception as e:
+            raised = True
             self.assertTrue(expected == str(e))
+        self.assertTrue(raised)
 
     @requests_mock.Mocker()
     def test_get_common_profile_fail_cannot_create_connection(self, mock):
+        raised = False
         mock.get(
             "https://www.instagram.com/fail_create_connection/?__a=1",
             exc=requests.exceptions.ConnectionError
         )
         try:
             self.client.get_common_profile("fail_create_connection")
-            self.assertTrue(False)
-        except requests.exceptions.ConnectionError as e:
-            self.assertTrue(True)
+        except requests.exceptions.ConnectionError:
+            raised = True
+        self.assertTrue(raised)
 
     def test_get_common_profile_fail_username_is_none(self):
+        raised = False
         expected = "username should not be none or empty"
         try:
             self.client.get_common_profile(None)
-            self.assertTrue(False)
         except Exception as e:
+            raised = True
             self.assertTrue(expected == str(e))
+        self.assertTrue(raised)
 
     def test_get_common_profile_fail_username_is_empty(self):
+        raised = False
         expected = "username should not be none or empty"
         try:
             self.client.get_common_profile("")
-            self.assertTrue(False)
         except Exception as e:
+            raised = True
             self.assertTrue(expected == str(e))
+        self.assertTrue(raised)
 
     def test_get_common_profile_fail_username_is_blank(self):
+        raised = False
         expected = "username should not be none or empty"
         try:
             self.client.get_common_profile(" ")
-            self.assertTrue(False)
         except Exception as e:
+            raised = True
             self.assertTrue(expected == str(e))
+        self.assertTrue(raised)

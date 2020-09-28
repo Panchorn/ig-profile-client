@@ -5,5 +5,8 @@ dist
 build
 htmlcov
 
+*egg*
 *venv/
 run.py
+.coverage
+coverage.xml
