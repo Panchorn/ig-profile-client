@@ -7,6 +7,14 @@ base_url = 'https://www.instagram.com/{}/?__a=1'
 class Client:
 
     def get_common_profile(self, username):
+        """
+        Get Instagram common profile by username
+
+        Arguments:
+            - username: ``str``
+
+        Return Profile that including full_name, profile_pic, follower and following
+        """
         if not username or username.isspace():
             raise Exception('username should not be none or empty')
         return self._get_profile(
