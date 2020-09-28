@@ -1,0 +1,15 @@
+language: python
+python:
+- '3.7'
+install:
+- pip install -r requirements.txt
+script:
+- pytest -vv --cov=./ --cov-report=xml tests/
+deploy:
+  provider: pypi
+  username: __token__
+  password:
+    secure: bXWko+HY4Fq4F7t+xccZIX05jXqlrVdJzl85o13bFTtG0toGeFGBnD4FYHhaOciQ4ePD2ccOrfBCl73oPy6vCJzi4vB1nNXcXqww9LVxpfguyDUVjzNx09AvEOJX1yiawvPZ0b5p+eK0kivLxrQAgVo/+5wcv0TMvDqGNBWC5Kia+ISQmPU7wYTr0yI1HyaBclIWxA315sz48oevisQ+DtaObHzma15aD+sM/gCarG0cISTyCcb/sZZVzkYoEII6fQWuJlr1Z2rcxXdwiC2ETRIfbxY6MalK3PkF9FZiJOnaSAw0upibbd9I4WFQ2jIwRtDaqsAChYY12Tb5XmqApEoEjEQ9drz3YqMENnkuncGoLFO96XECbcyOqDZ+xuKDgU0+uM2XGTQZyT5IokE905Wr1cXzudcCv/D9BL3FOAMrTfXU8Z7k2eF6JwryPbWHudARPPWWoEUe1tu/UY4w6/R2uiEqb/0C3GRa0/sArBNGu9DgwJPpOVZQixlohFH96fn0UYy7PtCZSzyP+Zy+j1sjC6bQZKkiL7AUjBN17Vwh25j7feyL81vcoxieYL5P0lZYELs+J/ywBq4RK+/KRI95mQEdoEuG7bYNcIMYSPY9v83FvhDp/iLRTvsItmEHTwfTnN7CEW56Xw1CzYm1knLHBRe+m3Raps4tr0Gs+Yc=
+  on:
+    tags: true
+    branch: master
