@@ -1,6 +1,7 @@
 # IG-PROFILE-CLIENT
 [![codecov](https://codecov.io/gh/Panchorn/ig-profile-client/branch/master/graph/badge.svg)](https://codecov.io/gh/Panchorn/ig-profile-client)
 [![PyPI](https://img.shields.io/pypi/v/ig-profile-client.svg)](https://pypi.org/project/ig-profile-client/)
+[![Travis](https://api.travis-ci.org/Panchorn/ig-profile-client.svg?branch=master)](https://travis-ci.org/Panchorn/ig-profile-client/)
 
 This library is a client to get Instagram profile data (public data).
 
